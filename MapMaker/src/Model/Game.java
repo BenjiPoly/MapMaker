@@ -2,10 +2,14 @@ package Model;
 
 import View.Window;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Game implements DeletableObserver {
 	
@@ -116,13 +120,31 @@ public class Game implements DeletableObserver {
     	return 'A';
     }
     
-    public void makeMap(String mapName) {
+    public void makeMap() {
+    	FileReader fr = null;
+    	BufferedReader br = null;
+    	int mapNumber = 0;
+    	
+    	try {
+			fr = new FileReader("src/mapNumber.txt");
+			br = new BufferedReader(fr);
+	    	mapNumber = Integer.parseInt(br.readLine()) + 1;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally {
+	    	try {
+	    		fr.close();
+				br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
     	
     	FileWriter fw = null;
     	BufferedWriter bw = null;
     	
     	try {
-    		fw = new FileWriter("maps/"+mapName+".txt");
+    		fw = new FileWriter("maps/map"+mapNumber+".txt");
     		bw = new BufferedWriter(fw);
     		
     		for(int i = 0 ;i < size ; i++) {
@@ -132,6 +154,10 @@ public class Game implements DeletableObserver {
         		bw.newLine();
         	}
     		
+    		fw = new FileWriter("src/mapNumber.txt", false);
+    		bw = new BufferedWriter(fw);
+    		bw.write(String.valueOf(mapNumber));
+    		System.out.println("Map " + mapNumber + "enregistrée.");
     	}catch(IOException e) {
     		e.printStackTrace();
     	}finally {

@@ -39,11 +39,7 @@ public class Keyboard implements KeyListener {
         	game.addObject(player.getPosX(), player.getPosY(), ' ');
         	break;
         case KeyEvent.VK_ENTER:
-        	Scanner sc = new Scanner(System.in);
-        	System.out.println("Entrer le nom de la map");
-        	String mapName = sc.nextLine();
-        	sc.close();
-        	game.makeMap(mapName);
+        	game.makeMap();
         	break;
         case KeyEvent.VK_B:
         	game.addObject(player.getPosX(), player.getPosY(), 'B');

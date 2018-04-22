@@ -22,7 +22,7 @@ public class Window {
     	
     	JFrame window = new JFrame(gameName);
 		this.windowPanel = new JPanel();
-		this.windowPanel.setLayout(new BoxLayout(this.windowPanel, BoxLayout.X_AXIS));
+		this.windowPanel.setLayout(new BoxLayout(this.windowPanel, BoxLayout.Y_AXIS));
 		this.map.setPreferredSize(new Dimension(size, size));
 		this.windowPanel.add(this.map);
 		
