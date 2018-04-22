@@ -2,14 +2,10 @@ package Model;
 
 import View.Window;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
-
 
 public class Game implements DeletableObserver {
 	
@@ -65,6 +61,7 @@ public class Game implements DeletableObserver {
     /*
      *Supprime l'objet auquel est attaché le Deletable ps
      */
+	@SuppressWarnings("unlikely-arg-type")
 	@Override
     synchronized public void delete(Deletable ps) {
         terrains.remove(ps);
