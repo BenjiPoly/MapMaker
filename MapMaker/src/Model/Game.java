@@ -157,7 +157,7 @@ public class Game implements DeletableObserver {
     		fw = new FileWriter("src/mapNumber.txt", false);
     		bw = new BufferedWriter(fw);
     		bw.write(String.valueOf(mapNumber));
-    		System.out.println("Map " + mapNumber + "enregistrée.");
+    		System.out.println("Map " + mapNumber + " enregistrée.");
     	}catch(IOException e) {
     		e.printStackTrace();
     	}finally {
