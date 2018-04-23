@@ -22,7 +22,6 @@ public class Main {
 			keyboard.setPlayer(game.getPlayer());
 			window.setKeyListener(keyboard);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
