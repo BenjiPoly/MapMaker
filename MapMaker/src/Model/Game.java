@@ -153,6 +153,8 @@ public class Game implements DeletableObserver {
         		}
         		bw.newLine();
         	}
+    		bw.close();
+    		fw.close();
     		
     		fw = new FileWriter("src/mapNumber.txt", false);
     		bw = new BufferedWriter(fw);
