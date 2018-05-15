@@ -20,6 +20,8 @@ public class Map extends JPanel {
     private BufferedImage breakableBlock;
     private BufferedImage tintedRock;
     private BufferedImage spike;
+    private BufferedImage chest;
+    private BufferedImage unbreakableBlock;
 
     public Map() {
         this.setFocusable(true);//Autorise la map à être au premier plan
@@ -29,6 +31,8 @@ public class Map extends JPanel {
         	this.breakableBlock = ImageIO.read(getClass().getResourceAsStream("/images/breakableBlock.png"));
         	this.tintedRock = ImageIO.read(getClass().getResourceAsStream("/images/tintedRock.png"));
         	this.spike = ImageIO.read(getClass().getResourceAsStream("/images/spike.png"));
+        	this.chest = ImageIO.read(getClass().getResourceAsStream("/images/chest.png"));
+        	this.unbreakableBlock = ImageIO.read(getClass().getResourceAsStream("/images/unbreakableBlock.png"));
         } catch (IOException e) {
     		e.printStackTrace();
     	}
@@ -49,17 +53,10 @@ public class Map extends JPanel {
             char ID = terrain.getID();
             switch(ID) {
             case 'A':
-            	g.setColor(Color.BLACK);
-                g.drawRect(x * 32, y * 32, 31, 31);
-            	g.setColor(Color.DARK_GRAY);
-            	g.fillRect(x * 32, y * 32, 31, 31);
+            	g.drawImage(unbreakableBlock, x*32, y*32,null);
             	break;
             case 'B':
             	g.drawImage(breakableBlock, x*32, y*32,null);
-            	break;
-            case 'W':
-            	g.setColor(Color.BLUE);
-            	g.fillRect(x * 32, y * 32, 32, 32);
             	break;
             case 'H':
             	g.setColor(Color.BLACK);
@@ -76,8 +73,7 @@ public class Map extends JPanel {
             	g.drawImage(tintedRock, x*32, y*32,null);
             	break;
             case 'C':
-            	g.setColor(Color.ORANGE);
-            	g.fillRect(x*32+4, y*32+4, 24, 24);
+            	g.drawImage(chest, x*32, y*32, null);
             	break;
             }
         }
